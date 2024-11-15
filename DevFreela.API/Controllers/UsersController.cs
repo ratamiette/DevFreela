@@ -6,6 +6,10 @@ namespace DevFreela.API.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
+        public UsersController(LifeCicleClass lifeCicleClass)
+        {
+            
+        }
         // GET api/users/{id}
         [HttpGet("{id}")]
         public IActionResult GetById(int id)

@@ -11,6 +11,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<OpeningTimeOption>(builder.Configuration.GetSection("OpeningTime"));
 
+//builder.Services.AddSingleton<LifeCicleClass>(e => new LifeCicleClass {  Name = "Initial State" });
+builder.Services.AddScoped<LifeCicleClass>(e => new LifeCicleClass {  Name = "Initial State" });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
