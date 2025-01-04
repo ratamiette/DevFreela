@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DevFreela.Infrastructure/bin/Debug/net8.0
+/DevFreela.Infrastructure/DevFreela.API/obj
+/DevFreela.Core/bin/Debug/net8.0
+/DevFreela.Infrastructure/obj/Debug/net8.0
+/DevFreela.Infrastructure/obj/Release/net8.0
+/DevFreela.Infrastructure/obj
+/DevFreela.Core/obj
+/DevFreela.Application/bin/Debug/net8.0
+/DevFreela.Application/obj
+/.vs
