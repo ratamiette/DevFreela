@@ -46,12 +46,6 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                     b.Property<int>("FreelancerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdClient")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdFreelancer")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("StartedAt")
                         .HasColumnType("datetime2");
 

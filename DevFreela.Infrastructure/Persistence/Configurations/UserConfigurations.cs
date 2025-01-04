@@ -20,14 +20,14 @@ namespace DevFreela.Infrastructure.Persistence.Configurations
             builder
                 .HasMany(u => u.OwnedProjects)
                 .WithOne()
-                .HasForeignKey(u => u.IdClient)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(u => u.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasMany(u => u.FreelanceProjects)
                 .WithOne()
-                .HasForeignKey(u => u.IdFreelancer)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(u => u.FreelancerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

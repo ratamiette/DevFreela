@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevFreela.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(DevFreelaDbContext))]
-    [Migration("20250104184559_InitialMigration")]
+    [Migration("20250104200912_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -47,12 +47,6 @@ namespace DevFreela.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("FreelancerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdClient")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdFreelancer")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("StartedAt")
