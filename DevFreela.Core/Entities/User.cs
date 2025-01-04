@@ -1,4 +1,6 @@
-﻿namespace DevFreela.Core.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DevFreela.Core.Entities
 {
     public class User : BaseEntity
     {
@@ -21,7 +23,10 @@
         public DateTime CreatedAt { get; private set; }
         public bool Active { get; set; } // why not private set?
         public List<UserSkill> Skills { get; private set; }
+        [InverseProperty("Client")]
         public List<Project> OwnedProjects { get; private set; }
+        [InverseProperty("Freelancer")]
         public List<Project> FreelanceProjects { get; private set; } // why not private set?
+        public List<ProjectComment> Comments { get; private set; } // why not private set?
     }
 }
