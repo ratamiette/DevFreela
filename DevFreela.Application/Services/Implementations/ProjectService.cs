@@ -1,8 +1,6 @@
 ﻿using Dapper;
-using DevFreela.Application.InputModels;
 using DevFreela.Application.Services.Interfaces;
 using DevFreela.Application.ViewModels;
-using DevFreela.Core.Entities;
 using DevFreela.Infrastructure.Persistence;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -50,64 +48,76 @@ namespace DevFreela.Application.Services.Implementations
 
             return projectDetailsViewModel;
         }
-        public int Create(CreateProjectInputModel inputModel)
-        {
-            var project = new Project(inputModel.Title, inputModel.Description, inputModel.ClientId, inputModel.FreelancerId, inputModel.TotalCost);
 
-            _dbContext.Projects.Add(project);
-            _dbContext.SaveChanges();
+        // migrated to CQRS
+        //public int Create(CreateProjectInputModel inputModel)
+        //{
+        //    var project = new Project(inputModel.Title, inputModel.Description, inputModel.ClientId, inputModel.FreelancerId, inputModel.TotalCost);
 
-            return project.Id;
-        }
-        public void CreateComment(CreateCommentInputModel inputModel)
-        {
-            var comment = new ProjectComment(inputModel.Content, inputModel.IdProject, inputModel.IdUser);
+        //    _dbContext.Projects.Add(project);
+        //    _dbContext.SaveChanges();
 
-            _dbContext.ProjectComments.Add(comment);
-            _dbContext.SaveChanges();
-        }
-        public void Update(UpdateProjectInputModel inputModel)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
+        //    return project.Id;
+        //}
 
-            project.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
+        // migrated to CQRS
+        //public void CreateComment(CreateCommentInputModel inputModel)
+        //{
+        //    var comment = new ProjectComment(inputModel.Content, inputModel.IdProject, inputModel.IdUser);
 
-            _dbContext.SaveChanges();
-        }
-        public void Start(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
+        //    _dbContext.ProjectComments.Add(comment);
+        //    _dbContext.SaveChanges();
+        //}
 
-            project.Start();
+        // migrated to CQRS
+        //public void Update(UpdateProjectInputModel inputModel)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
 
-            // using EF Core
-            //_dbContext.SaveChanges();
+        //    project.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
 
-            // using Dapper
-            using (var sqlConnection = new SqlConnection(_connectionString))
-            {
-                sqlConnection.Open();
+        //    _dbContext.SaveChanges();
+        //}
 
-                var statementSql = "UPDATE Projects SET Status = @status, StartedAt = @startedat WHERE Id = @id";
+        // migrated to CQRS
+        //public void Start(int id)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
 
-                sqlConnection.Execute(statementSql, new { status = project.Status, startedat = project.StartedAt, id });
-            }
-        }
-        public void Finish(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
+        //    project.Start();
 
-            project.Finish();
+        //    // using EF Core
+        //    //_dbContext.SaveChanges();
 
-            _dbContext.SaveChanges();
-        }
-        public void Delete(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
+        //    // using Dapper
+        //    using (var sqlConnection = new SqlConnection(_connectionString))
+        //    {
+        //        sqlConnection.Open();
 
-            project.Cancel();
+        //        var statementSql = "UPDATE Projects SET Status = @status, StartedAt = @startedat WHERE Id = @id";
 
-            _dbContext.SaveChanges();
-        }
+        //        sqlConnection.Execute(statementSql, new { status = project.Status, startedat = project.StartedAt, id });
+        //    }
+        //}
+
+        // migrated to CQRS
+        //public void Finish(int id)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
+
+        //    project.Finish();
+
+        //    _dbContext.SaveChanges();
+        //}
+
+        // migrated to CQRS
+        //public void Delete(int id)
+        //{
+        //    var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
+
+        //    project.Cancel();
+
+        //    _dbContext.SaveChanges();
+        //}
     }
 }
